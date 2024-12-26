@@ -1,0 +1,12 @@
+input {
+  width: 100%;
+}
+.items-container {
+  text-align: left;
+}
+.items_row {
+  margin: 5px 10px;
+}
+.App_buttons {
+  min-width: 80px;
+}
