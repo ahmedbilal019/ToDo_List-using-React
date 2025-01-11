@@ -1,12 +1,50 @@
-input {
+.todo-container {
+  background-color: lightblue;
+}
+html {
+  background-color: lightblue;
+}
+.inputfield {
   width: 100%;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 17px;
 }
 .items-container {
   text-align: left;
 }
 .items_row {
   margin: 5px 10px;
+  font-size: 18px;
+  font-weight: 500;
 }
-.App_buttons {
+.Delete_button {
   min-width: 80px;
+}
+.Add-button {
+  min-width: 80px;
+  margin-top: -4px;
+}
+.mainHeading {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 10px;
+  color: blue;
+}
+
+.welcomeScreen {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  margin: auto;
+  text-align: center;
+}
+.welcome-message {
+  color: rgb(73, 11, 189);
+  text-shadow: 1px 1px 2px #cccccc;
+}
+.welcome-note {
+  font-size: 18px;
 }
