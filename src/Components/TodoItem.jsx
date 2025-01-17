@@ -1,5 +1,5 @@
 import React from "react";
-
+import { MdDelete } from "react-icons/md";
 function TodoItem({ todoName, todoDate, onDeleteBtnClick }) {
   return (
     <div className="container">
@@ -8,11 +8,12 @@ function TodoItem({ todoName, todoDate, onDeleteBtnClick }) {
         <div className="col-4">{todoDate}</div>
         <div className="col-2">
           <button
+            title="Delete Todo"
             type="button"
-            className="btn btn-danger Delete-button"
+            className="btn btn-danger delete-button"
             onClick={() => onDeleteBtnClick(todoName)}
           >
-            DELETE
+            <MdDelete className="deleteIcon" />
           </button>
         </div>
       </div>

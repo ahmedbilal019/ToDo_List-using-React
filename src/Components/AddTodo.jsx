@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdOutlineAddBox } from "react-icons/md";
 
 function AddTodo({ onNewItem }) {
   const [TodoName, setTodoName] = useState("");
@@ -18,9 +19,9 @@ function AddTodo({ onNewItem }) {
   };
 
   return (
-    <div class="container ">
-      <div class="row items_row">
-        <div class="col-6">
+    <div className="container ">
+      <div className="row items_row">
+        <div className="col-6">
           <input
             className="inputfield"
             type="text"
@@ -29,7 +30,7 @@ function AddTodo({ onNewItem }) {
             onChange={handleNameChange}
           />
         </div>
-        <div class="col-4">
+        <div className="col-4">
           <input
             className="inputfield"
             type="date"
@@ -37,13 +38,14 @@ function AddTodo({ onNewItem }) {
             value={DueDate}
           />
         </div>
-        <div class="col-2">
+        <div className="col-2">
           <button
+            title="Add new Todo"
             type="button"
-            class="btn btn-success Add-button"
+            className="btn btn-success Add-button"
             onClick={handleAddButtonClick}
           >
-            ADD
+            <MdOutlineAddBox className="addIcon"/>
           </button>
         </div>
       </div>

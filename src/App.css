@@ -19,13 +19,15 @@ html {
   font-size: 18px;
   font-weight: 500;
 }
-.Delete_button {
+.delete-button {
   min-width: 80px;
+  width: 78px;
 }
 .Add-button {
   min-width: 80px;
   margin-top: -4px;
 }
+
 .mainHeading {
   font-family: "Courier New", Courier, monospace;
   font-weight: 700;
@@ -48,3 +50,7 @@ html {
 .welcome-note {
   font-size: 18px;
 }
+.addIcon,.deleteIcon {
+  font-size: 20px;
+}
+
