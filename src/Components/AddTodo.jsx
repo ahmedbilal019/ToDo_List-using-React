@@ -1,54 +1,42 @@
-import React, { useState } from "react";
+import React, { useContext, useRef } from "react";
 import { MdOutlineAddBox } from "react-icons/md";
+import { TodoList_Context } from "../store/TodoList_store";
 
-function AddTodo({ onNewItem }) {
-  const [TodoName, setTodoName] = useState("");
-  const [DueDate, setDueDate] = useState("");
+function AddTodo() {
+  const ContextObj = useContext(TodoList_Context);
+  const addNewItem = ContextObj.addNewItem;
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  };
-  const handleAddButtonClick = () => {
-    // console.log(TodoName, DueDate);
-    onNewItem(TodoName, DueDate);
-    setTodoName("");
-    setDueDate("");
+  const handleAddButtonClick = (event) => {
+    event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
+    addNewItem(todoName, dueDate);
   };
 
   return (
     <div className="container ">
-      <div className="row items_row">
+      <form className="row items_row" onSubmit={handleAddButtonClick}>
         <div className="col-6">
           <input
             className="inputfield"
             type="text"
             placeholder="Enter TODO Here"
-            value={TodoName}
-            onChange={handleNameChange}
+            ref={todoNameElement}
           />
         </div>
         <div className="col-4">
-          <input
-            className="inputfield"
-            type="date"
-            onChange={handleDateChange}
-            value={DueDate}
-          />
+          <input ref={dueDateElement} className="inputfield" type="date" />
         </div>
         <div className="col-2">
-          <button
-            title="Add new Todo"
-            type="button"
-            className="btn btn-success Add-button"
-            onClick={handleAddButtonClick}
-          >
-            <MdOutlineAddBox className="addIcon"/>
+          <button title="Add new Todo" className="btn btn-success Add-button">
+            <MdOutlineAddBox className="addIcon" />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

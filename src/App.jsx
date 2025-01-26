@@ -5,40 +5,47 @@ import AddTodo from "./Components/AddTodo";
 import ToDo_Title from "./Components/ToDo_Title";
 import ToDoItems_Container from "./Components/ToDoItems_Container";
 import WelcomeMessage from "./Components/WelcomeMessage";
+import { TodoList_Context } from "./store/TodoList_store";
 function App() {
   const InitialTodo_items = [];
   const [Todo_items, setTodo_items] = useState(InitialTodo_items);
-  const handleNewItem = (itemName, itemDueDate) => {
+  const addNewItem = (itemName, itemDueDate) => {
     if (itemName.length === 0 || itemDueDate.length === 0) {
       alert(
-        "You are missing some thing! Check the date & text field and Try Again !!!"
+        "You are missing some thing! Write the ToDo Text & date and Try Again !!!"
       );
     } else {
-      console.log(`new item added: ${itemName} Date:${itemDueDate}`);
-      const newToDoItem = [
-        ...Todo_items,
-        { name: itemName, date: itemDueDate },
-      ];
-      setTodo_items(newToDoItem);
+      setTodo_items((currVlaue) => {
+        const newToDoItem = [
+          ...currVlaue,
+          { name: itemName, date: itemDueDate },
+        ];
+
+        return newToDoItem;
+      });
     }
   };
-  const handleDeleteButton = (todoItemName) => {
-    console.log(`item is deleted :: ${todoItemName}`);
+  const deleteTodoItem = (todoItemName) => {
     const newToDoItem = Todo_items.filter((item) => item.name !== todoItemName);
     setTodo_items(newToDoItem);
   };
   return (
-    <center className="todo-container">
-      <ToDo_Title />
-      <div className="items-container">
-        <AddTodo onNewItem={handleNewItem} />
-        {Todo_items.length === 0 && <WelcomeMessage />}
-        <ToDoItems_Container
-          TODOitems={Todo_items}
-          onDeleteBtnClick={handleDeleteButton}
-        />
-      </div>
-    </center>
+    <TodoList_Context.Provider
+      value={{
+        Todo_items: Todo_items,
+        addNewItem: addNewItem,
+        deleteTodoItem: deleteTodoItem,
+      }}
+    >
+      <center className="todo-container">
+        <ToDo_Title />
+        <div className="items-container">
+          <AddTodo />
+          <WelcomeMessage />
+          <ToDoItems_Container />
+        </div>
+      </center>
+    </TodoList_Context.Provider>
   );
 }
 
