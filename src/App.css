@@ -19,7 +19,8 @@ html {
   font-size: 18px;
   font-weight: 500;
 }
-.delete-button {
+.delete-button,
+.markBtn {
   min-width: 80px;
   width: 78px;
 }
@@ -54,6 +55,7 @@ html {
   font-size: 18px;
 }
 .addIcon,
-.deleteIcon {
+.deleteIcon,
+.markIcon {
   font-size: 20px;
 }

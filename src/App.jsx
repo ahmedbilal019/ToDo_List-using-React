@@ -29,12 +29,16 @@ function App() {
     const newToDoItem = Todo_items.filter((item) => item.name !== todoItemName);
     setTodo_items(newToDoItem);
   };
+  const markTodo = (todoItemName) => {
+    console.log(`${todoItemName} is set as completed!`);
+  };
   return (
     <TodoList_Context.Provider
       value={{
         Todo_items: Todo_items,
         addNewItem: addNewItem,
         deleteTodoItem: deleteTodoItem,
+        markTodo: markTodo,
       }}
     >
       <center className="todo-container">
