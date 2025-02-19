@@ -10,7 +10,7 @@ function TodoItem({ todoName, todoDate }) {
   return (
     <div className="container">
       <div className="row items_row">
-        <div className="col-4">{todoName}</div>
+        <div className="col-6">{todoName}</div>
         <div className="col-4">{todoDate}</div>
         <div className="col-2">
           <button
@@ -20,16 +20,6 @@ function TodoItem({ todoName, todoDate }) {
             onClick={() => deleteTodoItem(todoName)}
           >
             <MdDelete className="deleteIcon" />
-          </button>
-        </div>
-        <div className="col-2">
-          <button
-            title="Mark as Complete"
-            type="button"
-            className="btn btn-primary markBtn"
-            onClick={() => markTodo(todoName)}
-          >
-            <IoMdCheckmarkCircle className="markIcon" />
           </button>
         </div>
       </div>

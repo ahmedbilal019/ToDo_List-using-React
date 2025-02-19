@@ -15,6 +15,7 @@ function AddTodo() {
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
     addNewItem(todoName, dueDate);
+    
   };
 
   return (

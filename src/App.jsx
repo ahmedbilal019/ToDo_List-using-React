@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import AddTodo from "./Components/AddTodo";
@@ -7,8 +7,16 @@ import ToDoItems_Container from "./Components/ToDoItems_Container";
 import WelcomeMessage from "./Components/WelcomeMessage";
 import { TodoList_Context } from "./store/TodoList_store";
 function App() {
+  const getStoredTodos = () => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    return storedTodos;
+  };
+
   const InitialTodo_items = [];
-  const [Todo_items, setTodo_items] = useState(InitialTodo_items);
+  const [Todo_items, setTodo_items] = useState(getStoredTodos);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(Todo_items));
+  }, [Todo_items]);
   const addNewItem = (itemName, itemDueDate) => {
     if (itemName.length === 0 || itemDueDate.length === 0) {
       alert(
@@ -29,16 +37,12 @@ function App() {
     const newToDoItem = Todo_items.filter((item) => item.name !== todoItemName);
     setTodo_items(newToDoItem);
   };
-  const markTodo = (todoItemName) => {
-    console.log(`${todoItemName} is set as completed!`);
-  };
   return (
     <TodoList_Context.Provider
       value={{
         Todo_items: Todo_items,
         addNewItem: addNewItem,
         deleteTodoItem: deleteTodoItem,
-        markTodo: markTodo,
       }}
     >
       <center className="todo-container">

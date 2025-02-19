@@ -55,7 +55,6 @@ html {
   font-size: 18px;
 }
 .addIcon,
-.deleteIcon,
-.markIcon {
+.deleteIcon {
   font-size: 20px;
 }
